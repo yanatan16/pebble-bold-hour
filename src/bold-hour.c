@@ -20,7 +20,7 @@
 #define MY_UUID { 0xA3, 0x33, 0x71, 0xE8, 0x33, 0xCB, 0x42, 0xD2, 0x8E, 0x91, 0xC6, 0x6F, 0x26, 0x72, 0xE5, 0xF2 }
 PBL_APP_INFO(MY_UUID,
              "Bold Hour", "joneisen.me",
-             0, 1, /* App version */
+             1, 1, /* App version */
              RESOURCE_ID_IMAGE_MENU_ICON,
              APP_INFO_WATCH_FACE);
 
@@ -32,6 +32,8 @@ TextLayer minuteLayer;
 int image_state = UNINITTED;
 
 BmpContainer imageContainer;
+
+#define TEXT_COLOR GColorWhite
 
 #define NUMBER_OF_IMAGES 12
 
@@ -92,7 +94,7 @@ void reinit_text_layer(unsigned short horiz) {
   if (current_horiz != horiz) {
     layer_remove_from_parent(&minuteLayer.layer);
     text_layer_init(&minuteLayer, GRect(horiz, 23, 40 /* width */, 40 /* height */));
-    text_layer_set_text_color(&minuteLayer, GColorWhite);
+    text_layer_set_text_color(&minuteLayer, TEXT_COLOR);
     text_layer_set_background_color(&minuteLayer, GColorClear);
     text_layer_set_font(&minuteLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINUTE_38)));
     layer_add_child(&imageContainer.layer.layer, &minuteLayer.layer);
