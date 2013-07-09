@@ -2,6 +2,8 @@
 
 This is a [pebble](http://getpebble.com) watchface which displays a large, watch-face-sized, bold hour and a smaller minute number in the center of the hour.
 
+_Note_: Last built with version 1.12
+
 ## My Pebble Faces
 
 Get and Vote for this face on mypebblefaces.com:
@@ -10,19 +12,15 @@ Get and Vote for this face on mypebblefaces.com:
 
 ## How to build
 
-This watchface was compiled with Android SDK release 1. Make sure you setup the SDK according to [pebble's instructions](http://developer.getpebble.com). Then clone this repo (or your fork) into the watches directory. Then add the symlinks.
+This watchface was compiled with Android SDK release 1.12. Make sure you setup the SDK according to [pebble's instructions](http://developer.getpebble.com). Then clone this repo (or your fork) into the watches directory. Then add the symlinks.
 
 ```
-cd ~/pebble-dev/pebble-sdk-release-001/watches
+cd ~/pebble-dev/PebbleSDK-1.12/Pebble/watches
 git clone http://github.com/yanatan16/pebble-bold-hour bold-hour
 ../tools/create_pebble_project.py --symlink-only ../sdk bold-hour
 ```
 
-To set it up for white numbers make sure the `minuteLayer` color is `GColorWhite`, and make sure all the images in the resoure map have the `-inv.png` on the end, as in `bold-hour-5-inv.png`.
-
-## Screenshot
-
-![Bold Hour Watchface Screenshot](http://jeisen.github.com/pebble-bold-hour/img/screenshot.jpg)
+To set it up for white numbers make sure the `#define LIGHT_WATCHFACE` is _not_ commented, and make sure all the images in the resoure map have the `-inv.png` on the end, as in `bold-hour-5-inv.png`. For black numbers, do the opposite.
 
 ## License
 
