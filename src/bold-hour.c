@@ -19,21 +19,30 @@
 
 #define MY_UUID { 0xA3, 0x33, 0x71, 0xE8, 0x33, 0xCB, 0x42, 0xD2, 0x8E, 0x91, 0xC6, 0x6F, 0x26, 0x72, 0xE5, 0xF2 }
 PBL_APP_INFO(MY_UUID,
-             "Bold Hour", "joneisen.me",
-             1, 1, /* App version */
+             "Bold Hour", "Jon Eisen",
+             1, 2, /* App version */
              RESOURCE_ID_IMAGE_MENU_ICON,
              APP_INFO_WATCH_FACE);
 
 Window window;
 
 TextLayer minuteLayer;
+GRect minuteFrame;
 
 #define UNINITTED -1
 int image_state = UNINITTED;
 
 BmpContainer imageContainer;
 
-#define TEXT_COLOR GColorWhite
+#define LIGHT_WATCHFACE
+
+#ifdef LIGHT_WATCHFACE
+  #define TEXT_COLOR GColorWhite
+  #define BKGD_COLOR GColorBlack
+#else
+  #define TEXT_COLOR GColorBlack
+  #define BKGD_COLOR GColorWhite
+#endif
 
 #define NUMBER_OF_IMAGES 12
 
@@ -89,16 +98,10 @@ void unload_digit_image() {
 }
 
 void reinit_text_layer(unsigned short horiz) {
-  static unsigned short current_horiz = 0;
-
-  if (current_horiz != horiz) {
-    layer_remove_from_parent(&minuteLayer.layer);
-    text_layer_init(&minuteLayer, GRect(horiz, 23, 40 /* width */, 40 /* height */));
-    text_layer_set_text_color(&minuteLayer, TEXT_COLOR);
-    text_layer_set_background_color(&minuteLayer, GColorClear);
-    text_layer_set_font(&minuteLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINUTE_38)));
-    layer_add_child(&imageContainer.layer.layer, &minuteLayer.layer);
-    current_horiz = horiz;
+  if (minuteFrame.origin.x != horiz) {
+    minuteFrame.origin.x = horiz;
+    layer_set_frame(&minuteLayer.layer, minuteFrame);
+    layer_mark_dirty(&minuteLayer.layer);
   }
 }
 
@@ -147,16 +150,24 @@ void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *t) {
 void handle_init(AppContextRef ctx) {
   (void)ctx;
 
-  window_init(&window, "Bold Hour watch");
+  window_init(&window, "Bold Hour");
   window_stack_push(&window, true /* Animated */);
-  window_set_background_color(&window, GColorWhite);
+  window_set_background_color(&window, BKGD_COLOR);
 
   resource_init_current_app(&APP_RESOURCES);
 
+  minuteFrame = GRect(53, 23, 40, 40);
+
+  text_layer_init(&minuteLayer, window.layer.frame);
+  text_layer_set_text_color(&minuteLayer, TEXT_COLOR);
+  text_layer_set_background_color(&minuteLayer, GColorClear);
+  text_layer_set_font(&minuteLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINUTE_38)));
+  layer_set_frame(&minuteLayer.layer, minuteFrame);
+
   // Avoids a blank screen on watch start.
   PblTm tick_time;
-
   get_time(&tick_time);
+
   display_time(&tick_time);
 }
 
@@ -164,7 +175,6 @@ void handle_deinit(AppContextRef ctx) {
   (void)ctx;
 
   unload_digit_image();
-
 }
 
 void pbl_main(void *params) {
