@@ -1,0 +1,87 @@
+{
+  "uuid": "a33371e8-33cb-42d2-8e91-c66f2672e5f2",
+  "shortName": "Bold Hour",
+  "longName": "Bold Hour",
+  "companyName": "Jon Eisen",
+  "versionCode": 2,
+  "versionLabel": "1.3.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "appKeys": {},
+  "resources": {
+    "media": [
+      {
+        "menuIcon": true,
+        "type": "png",
+        "name": "IMAGE_MENU_ICON",
+        "file": "images/bold-hour-icon.png"
+      },
+      {
+        "type": "font",
+        "name": "FONT_MINUTE_38",
+        "file": "fonts/edit_Asakim_Bold_38.ttf"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_1",
+        "file": "images/bold-hour-1-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_2",
+        "file": "images/bold-hour-2-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_3",
+        "file": "images/bold-hour-3-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_4",
+        "file": "images/bold-hour-4-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_5",
+        "file": "images/bold-hour-5-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_6",
+        "file": "images/bold-hour-6-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_7",
+        "file": "images/bold-hour-7-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_8",
+        "file": "images/bold-hour-8-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_9",
+        "file": "images/bold-hour-9-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_10",
+        "file": "images/bold-hour-10-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_11",
+        "file": "images/bold-hour-11-inv.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_NUM_12",
+        "file": "images/bold-hour-12-inv.png"
+      }
+    ]
+  }
+}
