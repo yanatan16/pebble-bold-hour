@@ -17,7 +17,7 @@
 #include <pebble.h>
 
 // -- build configuration --
-#define LIGHT_WATCHFACE
+// #define LIGHT_WATCHFACE
 
 // -- macros --
 #define UNINITTED -1
