@@ -17,12 +17,12 @@
 #include <pebble.h>
 
 // -- build configuration --
-// #define LIGHT_WATCHFACE
+#define WHITE_TEXT
 
 // -- macros --
 #define UNINITTED -1
 
-#ifdef LIGHT_WATCHFACE
+#ifdef WHITE_TEXT
   #define TEXT_COLOR GColorWhite
   #define BKGD_COLOR GColorBlack
 #else
