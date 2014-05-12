@@ -17,7 +17,7 @@
 #include <pebble.h>
 
 // -- build configuration --
-#define WHITE_TEXT
+// #define WHITE_TEXT
 
 // -- macros --
 #define UNINITTED -1
